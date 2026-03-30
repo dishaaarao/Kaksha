@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: 242 240 231; /* Kaksha Beige #F2F0E7 */
+    --text-main: 10 10 10;   /* Deep Black */
+    --primary: 0 0 0;        /* Pure Black */
+    --accent-pink: 255 109 223;
+    --accent-mint: 114 227 198;
+    --accent-purple: 109 74 255;
+    --surface: 255 255 255;
+    --surface-border: 200 196 182;
+  }
+  
+  .dark {
+    --bg-main: 15 15 15;
+    --text-main: 242 240 231;
+    --primary: 255 255 255;
+    --accent-pink: 255 131 228;
+    --surface: 25 25 25;
+    --surface-border: 45 45 45; 
+  }
+
+  * {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: rgb(var(--bg-main));
+    color: rgb(var(--text-main));
+    font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.011em;
+  }
+}
+
+/* Kaksha Artistic Typography */
+h1, h2, h3, h4, .font-heading {
+  letter-spacing: -0.05em;
+  font-weight: 900;
+  line-height: 0.95;
+}
+
+/* Premium Artistic Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.03);
+}
+
+.dark .glass-card {
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Artistic Shapes */
+.kaksha-rounded {
+  border-radius: 40px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
