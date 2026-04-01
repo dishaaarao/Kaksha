@@ -17,7 +17,7 @@ const Quiz = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5001/api/generate-quiz', { text: topic }, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5001/api'}/generate-quiz`, { text: topic }, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       setQuiz(res.data);
@@ -59,7 +59,7 @@ const Quiz = () => {
             The <span className="text-[#0D9488]">Critique</span>
           </h1>
           <p className="text-xl text-[#0A0A0A]/40 dark:text-white/40 mt-4 font-bold tracking-tight">
-            Test your vision. AI-sculpted challenges to sharpen your mastery.
+            Test your knowledge with comprehensive 10-question quizzes covering concepts, applications, and critical thinking.
           </p>
         </div>
       </div>
@@ -149,12 +149,24 @@ const Quiz = () => {
                     )
                   })}
                 </div>
+                
+                {submitted && q.explanation && (
+                  <div className="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl">
+                    <div className="flex items-start gap-2">
+                      <span className="text-blue-500 font-bold text-sm">💡 Explanation:</span>
+                      <p className="text-sm text-blue-800 dark:text-blue-200">{q.explanation}</p>
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
 
           {!submitted && (
-            <div className="flex justify-end pt-4">
+            <div className="flex justify-between items-center pt-4">
+              <div className="text-sm text-slate-500 dark:text-slate-400">
+                Progress: {Object.keys(userAnswers).length} of {quiz.length} questions answered
+              </div>
               <button
                 onClick={submitQuiz}
                 disabled={Object.keys(userAnswers).length !== quiz.length}
